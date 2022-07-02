@@ -1,0 +1,40 @@
+.mainAbutUs {
+    background-color: rgb(248, 242, 248);
+}
+
+.AbutUsPic {
+    margin-left: 13%;
+    height: 431px;
+    width: 77%;
+}
+
+.h1AbutUs {
+    color: aliceblue;
+    z-index: 2;
+    margin-left: 22%;
+    margin-top: -420px;
+}
+
+.abutUsInfo {
+    background-color: #48d0f3;
+    direction: rtl;
+    width: 54%;
+    height: 200px;
+    border-radius: 2%;
+    text-align: center;
+    box-shadow: black 0px -1px 20px 4px;
+    margin-top: 257px;
+    display: inline-block;
+    margin-left: 26%;
+}
+
+.abutUsP {
+    direction: rtl;
+    font-family: system-ui;
+    color: white;
+    font-weight: 600;
+}
+
+.signature {
+    font-weight: 400;
+}
