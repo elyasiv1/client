@@ -11,7 +11,8 @@ const Haeder = (props) => {
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
   const [showContactUsOpen, setShowContactUsOpen] = useState(false)
-  // const [showCartNumber, setShowCartNumber] = useState([])// סטייט שמכיל את מספר הפריטים בעגלה
+
+  // const [showCartNumber, setShowCartNumber] = useState([])//עתידי סטייט שמכיל את מספר הפריטים בעגלה
   // const openCart = () => {
   //   if (!props.showCartOpen) { props.setShowCartOpen(true) }
   //   else { props.setShowCartOpen(false) }
@@ -30,7 +31,7 @@ const Haeder = (props) => {
     console.log("!?!45345345345?!?");
     forceUpdate()
   }
-  const searchBtn = async () => { }  //כדי שיעבוד צריך להריץ שוב את כל ה
+  const searchBtn = async () => { }  //עתידי כדי שיעבוד צריך להריץ שוב את כל ה 
   // item נראה שעדיף ברידקס
   //  אחרי שעובד צריך לשנות את הפילטר 
   //     var url = `http://localhost:5555/items/?item=${item.name}?brand=${item.brend}?category=${item.category}`
@@ -83,7 +84,7 @@ const Haeder = (props) => {
         <li className='haederLi' onClick={() => {
           props.setShowCart(!props.shop.show)
         }} >
-          <div className='QuantityInCart'>0</div>
+          <div className='QuantityInCart'></div>
           {iconCart}
         </li>
       </nav>

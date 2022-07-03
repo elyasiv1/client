@@ -11,7 +11,8 @@
     border-radius: 4px;
     background-color: rgb(232, 220, 233);
     margin-top: 6px;
-    overflow: auto
+    overflow: auto;
+    color: #008b99;
 }
 
 .cartTitel {
