@@ -1,9 +1,9 @@
 import React from 'react'
-import './AbutUs.css'
-import mainLogo from "./abutUs1.jpg"
+import './styleing/AbutUs.css'
+import mainLogo from "./Assets/AbutUsPik.jpg"
 
 export default function AbutUs() {
-    return <div className= "mainAbutUs">
+    return <div className="mainAbutUs">
         <img className="AbutUsPic" src={mainLogo} alt="AbutUs" />
         <h1 className="h1AbutUs" >ESH Basketball Shop</h1>
         <div className="abutUsInfo">

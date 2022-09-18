@@ -5,12 +5,19 @@ import Cart from './Cart'
 import { bindActionCreators } from 'redux';
 import * as actionsCreators from './actions/index.js';
 import { connect } from 'react-redux';
+import Header from './Header';
+// import AbutUs from './AbutUs';
+import AbutUsCopy from './AbutUsCopy';
+import FuterVideo from "./FuterVideo"
 
 
 const Home = (props) => {
+    const [showCartOpen, setShowCartOpen] = useState(false)
     const [items, setItems] = useState([])//מוצרים
     const [cartItem, setcartItem] = useState([])// פרטים בעגלה
+    const [ShowAbutUsOpen, setShowAbutUsOpen] = useState(false)
     const [departmentFilter, setdepartmentFilter] = useState({//state שמכיל את הקטגוריות של המוצרים
+
 
         all: false,
         balls: false,
@@ -26,7 +33,11 @@ const Home = (props) => {
         date: new Date(),
         Order: [],
     })
-
+    const de = () => {
+        ShowAbutUsOpen ?
+            setShowAbutUsOpen(false) :
+            setShowAbutUsOpen(true)
+    }
     useEffect(() => {
         console.log("effect")
         loadingItem()
@@ -161,19 +172,55 @@ const Home = (props) => {
         }
 
     }
+    const itemPresintishon = () => {
+        return <div className='homePage'>
+            <FuterVideo />
+            <AbutUsCopy />
+            <div className="poster"></div>
 
+            <div className="homePageMain">
+
+                <Filtrs
+                    departmentFilter={departmentFilter}
+                    onClickfiltersHandler={onClickfiltersHandler}
+                    barPriceChange={barPriceChange} />
+
+                <ItemAvailable
+                    items={items}
+                    cartItem={cartItem}
+                    selectedItem={selectedItem}
+                    changeItemCount={changeItemCount}
+                />
+
+                {props.shop.show ? <Cart
+                    cartItem={cartItem}
+                    changeItemCount={changeItemCount}
+                    payProsse={payProsse}
+                /> : null}
+            </div>
+        </div>
+
+    }
 
     return <div className='homePage'>
-        <div className="poster"></div>
+        <header>
+            <Header
+                de={de}
+                showCartOpen={showCartOpen}
+                ShowAbutUsOpen={ShowAbutUsOpen}
+            />
+        </header>
+        {ShowAbutUsOpen ? <AbutUsCopy /> : itemPresintishon()}
+        {/* <div className="poster"></div>
 
         <div className="homePageMain">
-
+            
             <Filtrs
                 departmentFilter={departmentFilter}
                 onClickfiltersHandler={onClickfiltersHandler}
                 barPriceChange={barPriceChange} />
 
-            <ItemAvailable
+             <ItemAvailable
                 items={items}
                 cartItem={cartItem}
                 selectedItem={selectedItem}
@@ -185,7 +232,7 @@ const Home = (props) => {
                 changeItemCount={changeItemCount}
                 payProsse={payProsse}
             /> : null}
-        </div>
+        </div> */}
     </div>
 
 }

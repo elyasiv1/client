@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Cart.css';
+import './styleing/Cart.css';
 import Login from './Login';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShekelSign, faShoppingCart, faHandshake } from '@fortawesome/free-solid-svg-icons'
