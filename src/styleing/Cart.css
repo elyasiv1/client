@@ -1,0 +1,96 @@
+/* body{
+    font-family: OpenSansHebrew;
+} */
+.mainCart {
+    height: 619px;
+    width: 16%;
+    text-align: center;
+    left: 5px;
+    box-shadow: 2px 2px 4px #000000;
+    position: fixed;
+    border-radius: 4px;
+    background-color: rgb(255 255 255);
+    margin-top: 6px;
+    overflow: auto;
+    font-family: "Audiowide", sans-serif;
+    color: black;
+    top: 6%;
+}
+
+.cartTitel {
+    height: 30px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    
+
+}
+
+.CartIndividual {
+    display: flex;
+    height: 110px;
+    background-color: rgb(232, 220, 233);
+    border: solid black 0.4px;
+}
+
+.itemImageCart {
+    height: 65px;
+    width: 60px;
+    margin-top: 33%;
+    background-position: center;
+    box-sizing: inherit;
+    background-size: cover;
+    border-style: none;
+}
+
+.imageCart {
+    background-color: white;
+    border: solid 0.2px;
+    height: 100%;
+    width: 31%;
+}
+
+.CartIndividualName {
+    width: 30%;
+    margin: auto;
+   
+}
+
+.CartIndividualPC {
+    margin-left: 0px;
+    /* font-family: cursive; */
+}
+
+/* .cartIndividualCount */
+.CartNamber {
+    background-color:  #ce5e52;
+    display: flex;
+
+}
+
+.CartPM {
+    background-color: #ce5e52;
+    width: 33%;
+    font-size: large;
+    margin: auto;
+    cursor: pointer;
+}
+
+.totalPrice {
+    height: 25px;
+    inline-size: -webkit-fill-available;
+    background-color:  #ce5e52;
+    border: black solid 3px;
+    bottom: 5px;
+    cursor: pointer;
+    position: sticky;
+    font-size: larger;
+    display: flex;
+    /* font-family: cursive; */
+}
+
+.pay {
+    padding: 2px;
+    border-radius: 5px;
+    width: 30%;
+    background-color: rgb(140 190 210);
+}

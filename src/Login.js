@@ -14,6 +14,7 @@ class Login extends React.Component {
     test = () => {
         localStorage.token = "asdasdasdkjgsdjvlkajshdcahvcbasckhasdvchjasvdckjgvasdlkchv"
         localStorage.email = this.state.values.email
+
         this.props.onLogIn()
     }
     submitHandler = e => {
@@ -41,7 +42,7 @@ class Login extends React.Component {
 
                     localStorage.token = res.token
                     localStorage.email = values.email
-                    // localStorage.name = values.name
+                    localStorage.name = values.name
                     this.props.history.push('/')
                 }
             })

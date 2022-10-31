@@ -11,7 +11,7 @@ export default function Filters(props) {
             name: 'הכל',
             icon:'https://cdn3.iconfinder.com/data/icons/shopping-deliver-part1/64/deliver-512.png',
             key: 'all',
-            onClick: () => props.nav("all")
+            onClick: () => props.onClickfiltersHandler("all")
         },
         {
             className: ['liCatgory', props.departmentFilter.balls ? 'liCatgoryOn' : ""].join(" "),

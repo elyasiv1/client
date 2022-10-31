@@ -208,6 +208,7 @@ const Home = (props) => {
                 de={de}
                 showCartOpen={showCartOpen}
                 ShowAbutUsOpen={ShowAbutUsOpen}
+                cartItem={cartItem}
             />
         </header>
         {ShowAbutUsOpen ? <AbutUsCopy /> : itemPresintishon()}
