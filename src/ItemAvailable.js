@@ -29,14 +29,29 @@ export default function ItemAvailable(props) {
     return <div className='boxItem'>
 
         {showItemOpen ? itemDiteail : null}
-        {items.map((item, index) => {
+        {items
+
+            .filter(item =>  {
+                if(props.departmentFilter.filterName !== "all" )
+                {
+
+                    return item.department === props.departmentFilter.filterName &&
+                        item.price <= props.departmentFilter.barPrice
+
+                    console.log("nat All")
+
+                }
+
+               return item.price <= props.departmentFilter.barPrice
+            })
+            .map((item, index) => {
             let btn = <div className='addToCart' key={index} onClick={(e) => { props.selectedItem(item) }}
             >הוסף {iconCart}</div>
             if (item.count >= 1)
 
                 btn = <div className='addToCartNamber' key={index}>
                     <div className='addToCartP' onClick={(e) => { props.changeItemCount(item.id, 1) }}>+</div>
-                    <h2 className="cuntNumber">{props.cartItem, item.count}</h2>
+                    <h2 className="cuntNumber">{item.count}</h2>
                     <div className='addToCartM' onClick={(e) => { props.changeItemCount(item.id, -1) }}>-</div>
                 </div>
 

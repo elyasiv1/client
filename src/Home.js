@@ -14,16 +14,16 @@ import FuterVideo from "./FuterVideo"
 const Home = (props) => {
     const [showCartOpen, setShowCartOpen] = useState(false)
     const [items, setItems] = useState([])//מוצרים
+
+    const [showedItems, setSowedItems]= useState([])
     const [cartItem, setcartItem] = useState([])// פרטים בעגלה
     const [ShowAbutUsOpen, setShowAbutUsOpen] = useState(false)
     const [departmentFilter, setdepartmentFilter] = useState({//state שמכיל את הקטגוריות של המוצרים
-
-
-        all: false,
-        balls: false,
-        coach: false,
-        players: false,
-        yard: false,
+        // all: false,
+        // balls: false,
+        // coach: false,
+        // players: false,
+        // yard: false,
         barPrice: 2000,
         filterName: "all"
     })
@@ -42,7 +42,10 @@ const Home = (props) => {
         console.log("effect")
         loadingItem()
 
-    }, [departmentFilter])
+
+    },
+        []// אולי צריך להוציא מההוקס
+    )
 
     const selectedItem = (item) => {
         item.count = 1
@@ -74,68 +77,53 @@ const Home = (props) => {
 
 
     const onClickfiltersHandler = (filterName) => {//פונקציה שמקבלת את בקשת הקטגוריה ומשנה את state
-        setdepartmentFilter((oldState) => ({
-            ...oldState, all: false, balls: false, coach: false, players: false, yard: false
-            , [filterName]: true, filterName
-        }))
-
+        setdepartmentFilter({...departmentFilter, filterName} )
+        console.log({filterName})
+        console.log(departmentFilter)
     }
+
     function barPriceChange(e) {//stateפונקצי שמשנה את מד המחיר המבוקש ומעדכנת את ה
 
         const { name, value } = e.target
-
-
 
         const newdepartmentFilter = { ...departmentFilter, [name]: value }
 
         setdepartmentFilter(newdepartmentFilter)
 
-
     }
 
+    // async function getItems() {//פונקציה שמקבלת את המוצרים הנבחרים
+    //     let url = `http://localhost:5555/items/?price=${departmentFilter.barPrice}&department=${departmentFilter.filterName}`
+    //     try {
+    //         const res = await fetch(url)
+    //             .then(r => r.json())
+    //         console.log("spechel");
+    //         setItems(res)
+    //         setSowedItems(res)
+    //     } catch (error) { }
+    // }
 
-    async function getItems() {//פונקציה שמקבלת את המוצרים הנבחרים
-        var url = `http://localhost:5555/items/?price=${departmentFilter.barPrice}&department=${departmentFilter.filterName}`
-        try {
-            const res = await fetch(url)
-                .then(r => r.json())
-            console.log("spechel");
-            setItems(res)
-
-
-        } catch (error) { }
-
-
-    }
     async function getAllItems() {//פונקציה שמקבלת את כל המוצרים
         try {
             const res = await fetch(`http://localhost:5555/itemss/?price=${departmentFilter.barPrice}`)
                 .then(r => r.json())
-
             console.log("all");
-
             setItems(res)
-
-
+            setSowedItems(res)
         } catch (error) { }
-
-
     }
 
     const loadingItem = () => {//פונקציה שמציגה את הקטגוריה המבוקשת
         if (departmentFilter.filterName !== "all") {
-            getItems();
+            // getItems();
+            setdepartmentFilter()
             console.log("in if");
-
         }
 
         else {
             getAllItems();//פונקציה שמציגה את כל המוצרים
             console.log("in else if");
-
         }
-
-
     }
 
 
@@ -178,18 +166,19 @@ const Home = (props) => {
             <AbutUsCopy />
             <div className="poster"></div>
 
-            <div className="homePageMain">
+            <Filtrs
+                departmentFilter={departmentFilter}
+                onClickfiltersHandler={onClickfiltersHandler}
+                barPriceChange={barPriceChange} />
 
-                <Filtrs
-                    departmentFilter={departmentFilter}
-                    onClickfiltersHandler={onClickfiltersHandler}
-                    barPriceChange={barPriceChange} />
+            <div className="homePageMain">
 
                 <ItemAvailable
                     items={items}
                     cartItem={cartItem}
                     selectedItem={selectedItem}
                     changeItemCount={changeItemCount}
+                    departmentFilter={departmentFilter}
                 />
 
                 {props.shop.show ? <Cart
@@ -211,11 +200,11 @@ const Home = (props) => {
                 cartItem={cartItem}
             />
         </header>
-        {ShowAbutUsOpen ? <AbutUsCopy /> : itemPresintishon()}
+        {ShowAbutUsOpen ? <AbutUsCopy/> : itemPresintishon()}
         {/* <div className="poster"></div>
 
         <div className="homePageMain">
-            
+
             <Filtrs
                 departmentFilter={departmentFilter}
                 onClickfiltersHandler={onClickfiltersHandler}

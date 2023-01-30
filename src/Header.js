@@ -40,13 +40,14 @@ const Haeder = (props) => {
     console.log("!?!45345345345?!?");
     forceUpdate()
   }
-  const searchBtn = async () => { }  //עתידי כדי שיעבוד צריך להריץ שוב את כל ה 
+  const searchBtn =  (e) => {
+  }  //עתידי כדי שיעבוד צריך להריץ שוב את כל ה
   // item נראה שעדיף ברידקס
   //  אחרי שעובד צריך לשנות את הפילטר 
   //     var url = `http://localhost:5555/items/?item=${item.name}?brand=${item.brend}?category=${item.category}`
   //     try {
   //         const res = await fetch(url)
-  //             .then(r => r.json())
+  //             .then(r => r.json()
   //         setItems(res)
 
 
@@ -55,13 +56,12 @@ const Haeder = (props) => {
 
   // }
 
-  console.log(props.shop.show);
+
   const iconSearch = <FontAwesomeIcon icon={faSearch} />
   const iconLogout = <FontAwesomeIcon icon={faSignOutAlt} />
   const iconCart = <FontAwesomeIcon icon={faShoppingCart} />
-  console.log(props.showCartOpen);
-  console.log(props.ShowAbutUsOpen);
-  console.log(localStorage);
+
+
   return (
     <header>
       {showContactUsOpen ? <ContactUs onLogIn={() => { setShowContactUsOpen(false) }}
@@ -74,10 +74,10 @@ const Haeder = (props) => {
       </Link>
 
       <nav>
-        <Link to='/' className="haederLinkList"><li className='haederLi'>ראשי</li></Link>
-        {/* <Link to='/AbutUs' className=" haederLinkList"><li className='haederLi'>עלינו</li></Link> */}
-        <li className='haederLi' onClick={(e) => { openAbutUs(props) }}>עלינו</li>
-        <Link to='/' className="haederLinkList"><li className='haederLi'>מוצרים</li></Link>
+        {/*<Link to='/' className="haederLinkList"><li className='haederLi'>ראשי</li></Link>*/}
+        {/*/!* <Link to='/AbutUs' className=" haederLinkList"><li className='haederLi'>עלינו</li></Link> *!/*/}
+        {/*<li className='haederLi' onClick={(e) => { openAbutUs(props) }}>עלינו</li>*/}
+        {/*<Link to='/' className="haederLinkList"><li className='haederLi'>מוצרים</li></Link>*/}
         <li className='haederLi' onClick={(e) => {
           setShowContactUsOpen(true)
 
@@ -85,9 +85,11 @@ const Haeder = (props) => {
 
         <form className="searchForm">
           <i
-            onClick={searchBtn()}
+
           >{iconSearch}</i>
-          <input className='searchInput' type="search" placeholder="חפש מוצר או מותג" />
+          <input className='searchInput' type="search"
+                 onChange={(e) => searchBtn(e)}
+                 placeholder="חפש מוצר או מותג" />
         </form>
         <div className='userMail'>
           {localStorage.name}
